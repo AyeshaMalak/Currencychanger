@@ -1,30 +1,32 @@
-function convertCurrency() {
-    const amount = document.getElementById('amount').value;
+document.getElementById('convertBtn').addEventListener('click', function() {
     const currency = document.getElementById('currency').value;
-    let exchangeRate;
+    const amount = parseFloat(document.getElementById('amount').value);
+    const resultDiv = document.getElementById('result');
 
-    // Exchange rates for conversion to PKR
-    switch (currency) {
-        case 'usd':
-            exchangeRate = 277; // Example rate (1 USD = 277 PKR)
-            break;
-        case 'eur':
-            exchangeRate = 300; // Example rate (1 EUR = 300 PKR)
-            break;
-        case 'gbp':
-            exchangeRate = 350; // Example rate (1 GBP = 350 PKR)
-            break;
-        case 'inr':
-            exchangeRate = 3.5;  // Example rate (1 INR = 3.5 PKR)
-            break;
-        case 'cny':
-            exchangeRate = 40; // Example rate (1 CNY = 40 PKR)
-            break;
-        default:
-            alert('Invalid currency selected');
-            return;
+    if (isNaN(amount) || amount <= 0) {
+        resultDiv.innerText = "Please enter a valid amount.";
+        resultDiv.style.color = "red";
+        return;
     }
 
-    const result = amount * exchangeRate;
-    document.getElementById('result').textContent = `${amount} ${currency.toUpperCase()} = ${result.toFixed(2)} PKR`;
-}
+    let exchangeRate;
+
+    // Static exchange rates
+    switch (currency) {
+        case 'usd':
+            exchangeRate = 280; // 1 USD = 280 PKR
+            break;
+        case 'eur':
+            exchangeRate = 300; // 1 EUR = 300 PKR
+            break;
+        case 'gbp':
+            exchangeRate = 350; // 1 GBP = 350 PKR
+            break;
+        default:
+            exchangeRate = 0;
+    }
+
+    const convertedAmount = amount * exchangeRate;
+    resultDiv.innerText = `Converted Amount: PKR ${convertedAmount.toFixed(2)}`;
+    resultDiv.style.color = "#1E88E5";
+});
