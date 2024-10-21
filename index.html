@@ -8,21 +8,23 @@
 </head>
 <body>
     <div class="container">
-        <h1>Currency Converter to PKR</h1>
-        <div class="converter">
-            <input type="number" id="amount" placeholder="Amount" />
+        <h1>Currency Converter</h1>
+        <div class="input-group">
+            <label for="currency">Select Currency:</label>
             <select id="currency">
-                <option value="usd">USD - US Dollar</option>
-                <option value="eur">EUR - Euro</option>
-                <option value="gbp">GBP - British Pound</option>
-                <option value="inr">INR - Indian Rupee</option>
-                <option value="cny">CNY - Chinese Yuan</option>
+                <option value="usd">USD</option>
+                <option value="eur">EUR</option>
+                <option value="gbp">GBP</option>
             </select>
-            <button onclick="convertCurrency()">Convert</button>
         </div>
-        <h2 id="result"></h2>
+        <div class="input-group">
+            <label for="amount">Enter Amount:</label>
+            <input type="number" id="amount" placeholder="Enter amount" min="0">
+        </div>
+        <button id="convertBtn">Convert to PKR</button>
+        <div class="result" id="result">Converted Amount: PKR 0.00</div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
